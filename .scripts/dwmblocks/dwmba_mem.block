@@ -1,0 +1,6 @@
+#!/bin/bash
+
+light_color="#71b9f8"
+dark_color="#003261"
+
+echo "^b$light_color^^c$dark_color^ $(printf '\uf2db') ^d^^b$dark_color^^c$light_color^ $(free -h | awk -v OFS='/' '(NR==2){ print substr($3, 1, length($3)-1),substr($2, 1, length($2)-1) }') ^d^"

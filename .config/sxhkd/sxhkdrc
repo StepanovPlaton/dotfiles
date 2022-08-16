@@ -1,0 +1,13 @@
+Print
+	screenshot_dir_name="$HOME/Pictures/Screen Shots/$(date +"%d-%m-%Y")"; \
+	screenshot_file_name="$(date +"%d-%m-%Y_%H%M%S")"; \
+	mkdir -p "$screenshot_dir_name"; \
+	maim -sq "$screenshot_dir_name/$screenshot_file_name".png; \
+	xclip -selection clipboard -t image/png -i "$screenshot_dir_name/$screenshot_file_name".png
+
+shift + Print
+	screenshot_dir_name="$HOME/Pictures/Screen Shots/$(date +"%d-%m-%Y")"; \
+	screenshot_file_name="$(date +"%d-%m-%Y_%H%M%S")_FS"; \
+	mkdir -p "$screenshot_dir_name"; \
+	maim -q "$screenshot_dir_name/$screenshot_file_name".png; \
+	xclip -selection clipboard -t image/png -i "$screenshot_dir_name/$screenshot_file_name".png

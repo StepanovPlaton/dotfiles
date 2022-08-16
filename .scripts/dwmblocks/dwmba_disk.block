@@ -1,0 +1,9 @@
+#!/bin/bash 
+ 
+used=$(df -h / | sed -n '1!p' | cut -d' ' -f12) 
+total=$(df -h / | sed -n '1!p' | cut -d' ' -f9) 
+ 
+light_color="#99ad6a"
+dark_color="#444d2f"
+
+echo "^b$light_color^^c$dark_color^ $(printf '\uf0a0') ^d^^b$dark_color^^c$light_color^ $used/$total ^d^"

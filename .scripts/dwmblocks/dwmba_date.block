@@ -1,0 +1,7 @@
+#!/bin/bash
+
+light_color="#d8ad4c"
+dark_color="#4d4e1b"
+
+echo "^b$light_color^^c$dark_color^ $(date '+%d/%m') ^d^^b$dark_color^^c$light_color^ $(date '+%H:%M') ^d^"
+echo "^d^"

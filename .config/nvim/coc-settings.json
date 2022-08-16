@@ -1,0 +1,17 @@
+{
+  "python.analysis.typeCheckingMode": "strict",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "html",
+    "css",
+    "less",
+    "scss",
+    "yaml",
+    "markdown"
+  ]
+}

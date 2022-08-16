@@ -1,0 +1,73 @@
+#!/bin/bash 
+ 
+DEVICE=enp4s0 
+ 
+good=0 
+for gooddev in `grep \: /proc/net/dev | awk -F: '{print $1}'` 
+do 
+    if [ "$DEVICE" = $gooddev ] 
+    then 
+        good=1 
+        break 
+    fi 
+done 
+ 
+if [ $good -eq 0 ] 
+then 
+    echo "Change DEVICE in ~/.local/scripts/9993_network" 
+        grep ":" /proc/net/dev | awk -F: '{print $1}' | sed s@\ @@g 
+    exit 1 
+fi 
+ 
+if [ ! -f $HOME/.local/.tmp_RXNET_BIT ] 
+then 
+    RXNET_BIT=0 
+    TXNET_BIT=0 
+ 
+    echo $RXNET_BIT > $HOME/.local/.tmp_RXNET_BIT 
+    echo $TXNET_BIT > $HOME/.local/.tmp_TXNET_BIT 
+fi 
+ 
+RXNET_BIT=$(cat $HOME/.local/.tmp_RXNET_BIT) 
+TXNET_BIT=$(cat $HOME/.local/.tmp_TXNET_BIT) 
+ 
+line=`grep $DEVICE /proc/net/dev | sed s/.*://` 
+rx=`echo $line | awk '{print $1}'` 
+tx=`echo $line | awk '{print $9}'` 
+ 
+inbound=$(($rx-$RXNET_BIT)) 
+outbound=$(($tx-$TXNET_BIT)) 
+ 
+LASTNETTIME_BIT=$(date +%s) 
+ 
+line=`grep $DEVICE /proc/net/dev | sed s/.*://` 
+RXNET_BIT=`echo $line | awk '{print $1}'` 
+TXNET_BIT=`echo $line | awk '{print $9}'` 
+ 
+echo $RXNET_BIT > $HOME/.local/.tmp_RXNET_BIT 
+echo $TXNET_BIT > $HOME/.local/.tmp_TXNET_BIT 
+ 
+if [ $inbound -gt $((1024*1024)) ] 
+then 
+    inb=$(printf "%.2f MB/s" $(echo "scale=2; $inbound / 1024 / 1024" | bc)) 
+elif [ $inbound -gt 1024 ] 
+then 
+    inb=$(printf "%.2f KB/s" $(echo "scale=2; $inbound / 1024" | bc)) 
+else 
+    inb=$(printf "%i B/s" $inbound) 
+fi 
+ 
+if [ $outbound -gt $((1024*1024)) ] 
+then 
+    outb=$(printf "%.2f MB/s" $(echo "scale=2; $outbound / 1024 / 1024" | bc)) 
+elif [ $outbound -gt 1024 ] 
+then 
+    outb=$(printf "%.2f KB/s" $(echo "scale=2; $outbound / 1024" | bc)) 
+else 
+    outb=$(printf "%i B/s" $outbound) 
+fi 
+ 
+light_color="#a037b0"
+dark_color="#45184d"
+
+echo "^b$light_color^^c$dark_color^ $(printf '\uf6ff') ^d^^b$dark_color^^c$light_color^ $inb / $outb ^d^"

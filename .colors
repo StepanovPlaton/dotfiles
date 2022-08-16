@@ -1,0 +1,32 @@
+/* 6 dark colors */
+"#4d281c", /* red     */
+"#444d2f", /* green   */
+"#", /* yellow  */
+"#", /* blue    */
+"#45184d", /* magenta */
+"#003261", /* cyan    */
+
+
+/* 8 normal colors */
+"#000000", /* black   */
+"#cf6a4c", /* red     */
+"#99ad6a", /* green   */
+"#d8ad4c", /* yellow  */
+"#597bc5", /* blue    */
+"#a037b0", /* magenta */
+"#71b9f8", /* cyan    */
+"#adadad", /* white   */
+
+/* 8 bright colors */
+"#424242", /* black   */
+"#cf6a4c", /* red     */
+"#99ad6a", /* green   */
+"#d8ad4c", /* yellow  */
+"#597bc5", /* blue    */
+"#a037b0", /* magenta */
+"#71b9f8", /* cyan    */
+"#ffffff", /* white   */
+
+/* special colors */
+"#151515", /* background */
+"#eaeaea", /* foreground */

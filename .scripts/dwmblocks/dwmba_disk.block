@@ -1,6 +1,6 @@
 #!/bin/bash 
  
-used=$(df -h / | sed -n '1!p' | cut -d' ' -f12) 
+used=$(df -h / | sed -n '1!p' | cut -d' ' -f11) 
 total=$(df -h / | sed -n '1!p' | cut -d' ' -f9) 
  
 light_color="#99ad6a"

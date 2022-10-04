@@ -1,6 +1,6 @@
 #!/bin/bash 
  
-DEVICE=enp4s0 
+DEVICE=eth0 
  
 good=0 
 for gooddev in `grep \: /proc/net/dev | awk -F: '{print $1}'` 

@@ -4,4 +4,4 @@ light_color="#d8ad4c"
 dark_color="#4d3e1b"
 
 weather=$(curl -s -H 'Accept-Language: ru' 'wttr.in/Самара?M&format=%c+%t')
-echo "^b$light_color^^c$dark_color^ $(echo $weather | awk '{print $1}') ^d^^b$dark_color^^c$light_color^ $(echo $weather | awk '{print $2}') ^d^"
+echo "^b$light_color^^c$dark_color^ $(echo $weather | awk '{print substr($1, 1, length($1)-1)}') ^d^^b$dark_color^^c$light_color^ $(echo $weather | awk '{print $2}') ^d^"

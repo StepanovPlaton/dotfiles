@@ -7,5 +7,4 @@ zathura + mupdf + zathura-pdf-mupdf - pdf reader
 nsxiv - image viewer
 anilibria-cli
 mpv - video player
-menu-qalc - dmenu calculator
-wifi - Black Triangle wifi manager for dmenu
+clipmenu - clipboard manager for dmenu
